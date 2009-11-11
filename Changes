@@ -2,3 +2,7 @@ Revision history for Perl module Apache2::WebApp::Plugin::Cookie
 
 0.01 Sat Oct 17 22:08:43 2009
     - original version; created by ExtUtils::ModuleMaker 0.51
+
+0.02 Tue Nov 10 21:05:58 2009
+    - Fixed META.yml field mispelling.  Removed 'no_index'
+    - Minor POD updates.
