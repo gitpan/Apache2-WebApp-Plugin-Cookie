@@ -1,0 +1,40 @@
+8
+
+dir
+49
+svn://mbrooks.info:3690/mnt/ebs/home/svn/apache2-webapp-toolkit/branches/Apache2-WebApp-Plugin-Cookie-0.03/lib/Apache2/WebApp/Plugin
+svn://mbrooks.info:3690/mnt/ebs/home/svn/apache2-webapp-toolkit
+
+
+
+2009-11-13T05:48:17.731953Z
+49
+marc
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+7037cf45-6ea8-4d5c-a3e8-7e643f0a4670
+
+Cookie.pm
+file
+
+
+
+
+2009-11-08T08:02:36.000000Z
+e3245559d2579bf57b72b1ed6365f4d7
+2009-11-13T05:48:17.731953Z
+49
+marc
+
