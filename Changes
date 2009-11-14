@@ -7,5 +7,6 @@ Revision history for Perl module Apache2::WebApp::Plugin::Cookie
     - Fixed META.yml field mispelling.  Removed 'no_index'
     - Minor POD updates.
 
-0.03 Thu Nov 12 21:29:11 2009
+0.03 Thu Nov 13 20:29:47 2009
+0.04
     - Minor POD updates.

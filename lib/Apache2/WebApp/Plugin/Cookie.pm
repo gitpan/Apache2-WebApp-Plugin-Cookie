@@ -3,7 +3,7 @@
 #  Apache2::WebApp::Plugin::Cookie - Plugin providing HTTP cookie methods
 #
 #  DESCRIPTION
-#  Common methods for manipulating web browser cookies.
+#  Common methods creating for manipulating web browser cookies.
 #
 #  AUTHOR
 #  Marc S. Brooks <mbrooks@cpan.org>
@@ -21,7 +21,7 @@ use base 'Apache2::WebApp::Plugin';
 use Apache2::Cookie;
 use Params::Validate qw( :all );
 
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~[  OBJECT METHODS  ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
@@ -136,7 +136,7 @@ Apache2::WebApp::Plugin::Cookie - Plugin providing HTTP cookie methods
 
 =head1 DESCRIPTION
 
-Common methods for manipulating web browser cookies.
+Common methods for creating and manipulating web browser cookies.
 
 =head1 PREREQUISITES
 
@@ -204,6 +204,33 @@ Return the browser cookie value.
 Delete a browser cookie by name.
 
   $c->plugin('Cookie')->delete( \%controller, $name );
+
+=head1 EXAMPLE
+
+  package Example;
+
+  sub _default {
+      my ( $self, $c ) = @_;
+
+      $c->plugin('Cookie')->set( $c, {
+          name    => 'foo',
+          value   => 'bar',
+          expires => '1h',
+          secure  => 0,
+        });
+
+      $c->plugin('CGI')->redirect( $c, '/app/example/verify' );
+  }
+
+  sub verify {
+      my ( $self, $c ) = @_;
+
+      $c->request->content_type('text/html');
+
+      print $c->plugin('Cookie')->get('foo');
+  }
+
+  1;
 
 =head1 SEE ALSO
 

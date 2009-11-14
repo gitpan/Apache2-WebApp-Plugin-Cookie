@@ -9,7 +9,7 @@ SYNOPSIS
       $c->plugin('Cookie')->method( ... );
 
 DESCRIPTION
-    Common methods for manipulating web browser cookies.
+    Common methods for creating and manipulating web browser cookies.
 
 PREREQUISITES
     This package is part of a larger distribution and was NOT intended to be
@@ -72,6 +72,32 @@ OBJECT METHODS
     Delete a browser cookie by name.
 
       $c->plugin('Cookie')->delete( \%controller, $name );
+
+EXAMPLE
+      package Example;
+
+      sub _default {
+          my ( $self, $c ) = @_;
+
+          $c->plugin('Cookie')->set( $c, {
+              name    => 'foo',
+              value   => 'bar',
+              expires => '1h',
+              secure  => 0,
+            });
+
+          $c->plugin('CGI')->redirect( $c, '/app/example/verify' );
+      }
+
+      sub verify {
+          my ( $self, $c ) = @_;
+
+          $c->request->content_type('text/html');
+
+          print $c->plugin('Cookie')->get('foo');
+      }
+
+      1;
 
 SEE ALSO
     Apache2::WebApp, Apache2::WebApp::Plugin, Apache2::Cookie
