@@ -21,7 +21,7 @@ use base 'Apache2::WebApp::Plugin';
 use Apache2::Cookie;
 use Params::Validate qw( :all );
 
-our $VERSION = 0.04;
+our $VERSION = 0.05;
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~[  OBJECT METHODS  ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
@@ -41,8 +41,12 @@ sub set {
     my $default = "Mon, 16-Mar-2020 00:00:00 GMT";
     my $expire  = $vars->{expire} ? $vars->{expire} : $default;
     my $secure  = $vars->{secure} ? $vars->{secure} : 0;
+    my $domain  = $vars->{domain};
 
-    my $domain = $c->plugin('Filters')->strip_domain_alias( $c->config->{apache_domain} );
+    unless ($domain) {
+        $domain = $c->plugin('Filters')->strip_domain_alias( $c->config->{apache_domain} );
+        $domain = ".$domain";     # set global across all domain aliases
+    }
 
     my $cookie = Apache2::Cookie->new(
         $c->request,
@@ -50,7 +54,7 @@ sub set {
         -value   => $vars->{value},
         -expires => $expire,
         -path    => '/',
-        -domain  => ".$domain",
+        -domain  => $domain,
         -secure  => $secure
       );
 
@@ -188,6 +192,7 @@ Set a new browser cookie.
         name    => 'foo',
         value   => 'bar',
         expires => '24h',
+        domain  => 'www.domain.com',    # optional
         secure  => 0,
     });
 
@@ -208,6 +213,8 @@ Delete a browser cookie by name.
 =head1 EXAMPLE
 
   package Example;
+
+  use strict;
 
   sub _default {
       my ( $self, $c ) = @_;

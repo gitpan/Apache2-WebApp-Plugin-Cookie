@@ -58,6 +58,7 @@ OBJECT METHODS
             name    => 'foo',
             value   => 'bar',
             expires => '24h',
+            domain  => 'www.domain.com',    # optional
             secure  => 0,
         });
 
@@ -75,6 +76,8 @@ OBJECT METHODS
 
 EXAMPLE
       package Example;
+
+      use strict;
 
       sub _default {
           my ( $self, $c ) = @_;

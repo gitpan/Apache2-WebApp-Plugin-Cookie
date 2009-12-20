@@ -1,3 +1,6 @@
+[project]
+title           = Basic
+
 [apache]
 domain          = localhost.localdomain
 doc_root        = @ServerRoot@
