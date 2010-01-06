@@ -21,7 +21,7 @@ use base 'Apache2::WebApp::Plugin';
 use Apache2::Cookie;
 use Params::Validate qw( :all );
 
-our $VERSION = 0.07;
+our $VERSION = 0.08;
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~[  OBJECT METHODS  ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
