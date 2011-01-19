@@ -21,7 +21,7 @@ use base 'Apache2::WebApp::Plugin';
 use Apache2::Cookie;
 use Params::Validate qw( :all );
 
-our $VERSION = 0.09;
+our $VERSION = 0.10;
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~[  OBJECT METHODS  ]~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
@@ -159,16 +159,16 @@ From source:
   $ tar xfz Apache2-WebApp-Plugin-Cookie-0.X.X.tar.gz
   $ perl MakeFile.PL PREFIX=~/path/to/custom/dir LIB=~/path/to/custom/lib
   $ make
-  $ make test     <--- Make sure you do this before contacting me
+  $ make test
   $ make install
 
 Perl one liner using CPAN.pm:
 
-  perl -MCPAN -e 'install Apache2::WebApp::Plugin::Cookie'
+  $ perl -MCPAN -e 'install Apache2::WebApp::Plugin::Cookie'
 
 Use of CPAN.pm in interactive mode:
 
-  $> perl -MCPAN -e shell
+  $ perl -MCPAN -e shell
   cpan> install Apache2::WebApp::Plugin::Cookie
   cpan> quit
 
@@ -215,6 +215,7 @@ Delete a browser cookie by name.
   package Example;
 
   use strict;
+  use warnings;
 
   sub _default {
       my ( $self, $c ) = @_;
